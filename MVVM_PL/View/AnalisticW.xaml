@@ -1,0 +1,119 @@
+﻿<Window x:Class="MVVM_PL.View.AnalisticW"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_PL.View"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="GridOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="UserGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1020"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="880"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="GridClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="UserGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="880"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1020"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+            <BeginStoryboard Storyboard="{StaticResource GridOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+            <BeginStoryboard Storyboard="{StaticResource GridClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="LightGray">
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF13688D"  >
+
+
+            <TextBlock Text="In Real Time" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" >
+                    <StackPanel Width="150">
+                        <Button Content="Logout" Click="Button_Click" />
+                        <Separator/>
+                        <Button Content="Exit" Click="Exit_Button_Click" />
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+            <!--<StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Able Dutra" VerticalAlignment="Center" FontSize="18"/>
+                <materialDesign:PopupBox  Margin="0,0,10,10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="40" VerticalAlignment="Bottom">
+                    <StackPanel Width="150">
+                        <Button Content="Setting"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+
+            </StackPanel>-->
+
+        </Grid>
+
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF1F3D68">
+            <StackPanel >
+                <Grid Height="150" Background="White">
+                    <materialDesign:PackIcon Kind="AccountGroup" Width="70" Height="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="65,58,65,0" Foreground="#FF1F3D68"/>
+                    <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Style="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right"  Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF1F3D68" Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonOpenMenu" Width="60" Height="60" Style="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonOpenMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF1F3D68" Kind="Menu" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF13688D" Background="{x:Null}">
+                    <ListViewItem x:Name="AddItem"   Height="60" Background="#FF1F3D68" Selected="AddItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Plus" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Add" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="SearchItem"  Height="60" Background="#FF1F3D68" Selected="SearchItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MapSearch" Width="25" Height="25" VerticalAlignment="Center"  Margin="10"/>
+                            <TextBlock Text="Search" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem   x:Name="AssessmentItem"  Height="60" Background="#FF1F3D68" Selected="AssessmentItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Poll"  Margin="10" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="Assessment" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+
+        </Grid>
+        <Grid x:Name="UserGrid" Width="880" Height="540" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <TextBlock x:Name="nameTextBlock" FontSize="30" HorizontalAlignment="Center" Margin="0,10,453,0" TextWrapping="Wrap" Text="Welcome!" VerticalAlignment="Top" Height="45"  Width="172" FontFamily="MV Boli" Foreground="#FF1F3D68"/>
+            <local:AddFall x:Name="addUC" Visibility="Collapsed" HorizontalAlignment="Center" Height="475" VerticalAlignment="Top" Width="630" Margin="131,34,119,0"/>
+            <local:Graph1 x:Name="assesUC" Visibility="Collapsed"  HorizontalAlignment="Center" Height="530" Margin="10,10,0,0" VerticalAlignment="Top" Width="838"/>
+            <local:SearchWithMap x:Name="searchUC" Visibility="Hidden" Width="880" Height="540" HorizontalAlignment="Center" >
+                <local:SearchWithMap.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </local:SearchWithMap.Background>
+            </local:SearchWithMap>
+            <!--<local:SearchWithMap x:Name="searchUC" Visibility="Visible"  HorizontalAlignment="Left" Height="305" Margin="255,204,0,0" VerticalAlignment="Top" Width="561"/>-->
+          
+        </Grid>
+    </Grid>
+</Window>

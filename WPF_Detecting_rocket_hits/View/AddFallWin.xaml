@@ -1,0 +1,42 @@
+﻿<Window x:Class="PL.View.AddFallWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:local="clr-namespace:PL.View"
+        mc:Ignorable="d"
+        Title="AddFallWin" Height="450" Width="800">
+    <Grid>
+                            <GroupBox Header="fall information" HorizontalAlignment="Left" Height="340" Margin="66,31,0,0" VerticalAlignment="Top" Width="480" Foreground="#FFEAAB3D" BorderBrush="#FFE6A128" BorderThickness="2"  >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="19*"/>
+                                <ColumnDefinition Width="129*"/>
+                                <ColumnDefinition Width="101*"/>
+                                <ColumnDefinition Width="218*"/>
+                            </Grid.ColumnDefinitions>
+                <TextBox x:Name="idFallTxt"  HorizontalAlignment="Left" Height="40" Margin="45,13,0,0" TextWrapping="Wrap" Width="231" FontSize="20" VerticalAlignment="Top" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding FallId}" />
+                <DatePicker x:Name="DateFall"  HorizontalAlignment="Left" Margin="44,61,0,0" VerticalAlignment="Top"  Width="231" FontSize="20" Height="30" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding DateFall}"/>
+                            <!--<TextBox x:Name="hourRep" HorizontalAlignment="Left" Height="40" Margin="288,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" />-->
+
+                <TextBox x:Name="StreetFall"  HorizontalAlignment="Left" Height="40" Margin="43,142,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding AddressFall}"/>
+                <TextBox x:Name="cityFall"  HorizontalAlignment="Left" Height="40" Margin="43,191,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding CityFall}"/>
+                <Image x:Name="ImageFall"  HorizontalAlignment="Left" Height="40" Margin="45,242,0,0"   VerticalAlignment="Top" Width="231" Grid.Column="2" Grid.ColumnSpan="2"  Source="{Binding ImageLocation}"/>
+
+
+                            <TextBlock HorizontalAlignment="Left" Margin="8.8,17,0,0" TextWrapping="Wrap"  Text="id" VerticalAlignment="Top" Height="36" Width="166" Grid.ColumnSpan="2" Grid.Column="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8.8,62,0,0" TextWrapping="Wrap" Text="date" VerticalAlignment="Top" Height="36" Width="166" Grid.ColumnSpan="2" Grid.Column="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="8.8,105,0,0" TextWrapping="Wrap" Text="hour" VerticalAlignment="Top" Height="37" Width="166" Grid.ColumnSpan="2" Grid.Column="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="5.8,146,0,0" TextWrapping="Wrap" Text="street" VerticalAlignment="Top" Height="36" Width="166" Grid.ColumnSpan="2" Grid.Column="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="2.8,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="166" Grid.ColumnSpan="2" Grid.Column="1"><Run Text="image"/><LineBreak/><Run/></TextBlock>
+                            <!--<local:TimePicker x:Name="TimeCombos" HorizontalAlignment="Left" Height="30" Margin="289,104,0,0" VerticalAlignment="Top" Width="160"/>-->
+                            <xctk:TimePicker x:Name="hourFall"  HorizontalAlignment="Left" Margin="43,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="34" Width="224" FontSize="20" Grid.Column="2" Grid.ColumnSpan="2"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="3.8,194,0,0" TextWrapping="Wrap" Text="city" VerticalAlignment="Top" Height="36" Width="166" Grid.ColumnSpan="2" Grid.Column="1"/>
+
+                        </Grid>
+                    </GroupBox>
+
+    </Grid>
+</Window>

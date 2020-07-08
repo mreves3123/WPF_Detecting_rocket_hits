@@ -1,0 +1,95 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:View="clr-namespace:PL.View" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PL.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Background="{StaticResource BackgroundGradient}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="logo" Grid.ColumnSpan="2" Margin="18,5,591.6,89" Grid.RowSpan="2"  >
+
+            <TextBlock HorizontalAlignment="Left" Margin="7,2,0,0" TextWrapping="Wrap" Text="DRH" VerticalAlignment="Top" Height="58" Width="144" FontSize="36" TextAlignment="Center" FontFamily="MV Boli" Foreground="#FFC35F26"/>
+            <TextBlock HorizontalAlignment="Left" Margin="35,50,-10,0" TextWrapping="Wrap" Text="Detecting rocket hits" VerticalAlignment="Top" FontFamily="Segoe Print" Height="50" Width="127" FontSize="14" RenderTransformOrigin="0.5,0.5" Foreground="#FFCD851E"/>
+
+            <Image HorizontalAlignment="Left" Height="79" Margin="0,5,0,0" VerticalAlignment="Top" Width="42" Source="image/logo4.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="27.181"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+        </Grid>
+        <Button   Content="Reporting"  HorizontalAlignment="Stretch"  Grid.Row="1" />
+        <Button Content="Falls" HorizontalAlignment="Stretch"  Grid.Row="2" />
+        <Button Content="search and show" HorizontalAlignment="Stretch"  Grid.Row="3" />
+        <Button Content="Analysis" HorizontalAlignment="Stretch" Grid.Row="4"  />
+        <Grid x:Name="shell" Grid.RowSpan="5" Grid.Column="1"  Background="{DynamicResource BackgroundGradient}" Margin="0" >
+            <!-- <View:AddReport   FontSize="24" />-->
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Reporting information"  Foreground="#FFEAAB3D" BorderBrush="#FFE6A128" BorderThickness="3" Margin="50,50,49.6,-0.4" FontSize="22"  >
+                    <Grid DataContext="{Binding TheReportFall}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="108*"/>
+                            <ColumnDefinition Width="359*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="nameTxt" Text="{Binding NameReporter}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="10,7" />
+                        <xctk:DateTimePicker x:Name="dateRep" Value="{Binding DateRep}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Margin="10,7"/>
+                        <TextBox x:Name="streetTxt" Text="{Binding Address}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Margin="10,7"/>
+                        <TextBox x:Name="cityTxt" Text="{Binding City}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Margin="10,7"/>
+                        <TextBox x:Name="boomsTxt" Text="{Binding BoomsN}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Margin="10,7"/>
+                        <DockPanel  Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="10,7">
+                            <Slider x:Name="intensitySlide" Value="{Binding Intensity}" Width="400" Minimum = "0" Maximum = "10" TickFrequency = "1" TickPlacement = "BottomRight" IsSnapToTickEnabled="True"  />
+                            <TextBox x:Name="intensityTxt"  Text="{Binding Value, ElementName=intensitySlide, UpdateSourceTrigger=PropertyChanged }" MinWidth="50" HorizontalAlignment="Stretch" Margin="50,0,0,0"/>
+                        </DockPanel>
+
+                        <TextBlock  TextWrapping="Wrap"  Text="name"   Grid.Column="0"  Grid.Row="0" FontSize="22" HorizontalAlignment="Center" />
+                        <TextBlock  TextWrapping="Wrap" Text="time"  Grid.Column="0"  Grid.Row="1" FontSize="22" HorizontalAlignment="Center" />
+                        <TextBlock  TextWrapping="Wrap" Text="street" Grid.Column="0"  Grid.Row="2" FontSize="22" HorizontalAlignment="Center" />
+                        <TextBlock TextWrapping="Wrap"  Text="city" Grid.Column="0" Grid.Row="3" FontSize="22" HorizontalAlignment="Center"/>
+                        <TextBlock  TextWrapping="Wrap" Text="num of hits" Grid.Column="0"  Grid.Row="4" FontSize="22" HorizontalAlignment="Center" />
+                        <TextBlock  TextWrapping="Wrap" Text="intensity" Grid.Column="0" Grid.Row="5" FontSize="22" HorizontalAlignment="Center" />
+
+
+                    </Grid>
+                </GroupBox>
+                <Button x:Name="finishBtn"  Content="Finish" HorizontalAlignment="Stretch" Margin="60,20" Foreground="Black" Command="{Binding addRepCom}" Grid.Row="1"/>
+            
+            </Grid>
+
+
+        </Grid>
+
+    </Grid>
+</Window>

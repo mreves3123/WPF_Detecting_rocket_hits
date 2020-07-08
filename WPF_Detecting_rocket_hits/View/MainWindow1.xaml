@@ -1,0 +1,115 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"   
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Detecting_rocket_hits"
+          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+    x:Class="WPF_Detecting_rocket_hits.MainWindow"
+          Title="DRH" Height="600" Width="1000">
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="myLinearGradientBrush">
+            <LinearGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                    <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="#FFCB9342"
+                    Offset="0" />
+            <GradientStop Color="#FFE2CA77"
+                    Offset="0.5" />
+            <GradientStop Color="#FFCDA55F"
+                    Offset="1" />
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Grid Background="gray">
+
+        <Grid x:Name="logo" Margin="0,0,748.6,475.4">
+
+            <TextBlock HorizontalAlignment="Left" Margin="59,10,0,0" TextWrapping="Wrap" Text="DRH" VerticalAlignment="Top" Height="58" Width="144" FontSize="36" TextAlignment="Center" FontFamily="Segoe UI Black" Foreground="#FFCD851E"/>
+            <TextBlock HorizontalAlignment="Left" Margin="77,52,-6,0" TextWrapping="Wrap" Text="Detecting rocket hits" VerticalAlignment="Top" FontFamily="Segoe UI Black" Height="34" Width="142" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Foreground="#FFCD851E"/>
+
+            <!--<Image HorizontalAlignment="Left" Height="79" Margin="29,10,0,0" VerticalAlignment="Top" Width="42" Source="image/logo2.jpg" RenderTransformOrigin="0.5,0.5" OpacityMask="#FFBD1515">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="34.954"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>-->
+
+        </Grid>
+
+        <TabControl Height="463" Width="992" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="36" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="ArrowCD"  BorderThickness="0,1,1,1" TabStripPlacement="Left" Margin="0,106,0,0" Foreground="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedIndex="0">
+            <TabItem Header="Home" Width="250" Padding="6,5" Height="115" Background="{x:Null}" BorderBrush="#FF080808" BorderThickness="1" FontSize="24">
+                <Grid  Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
+                    <Button Content="add fall" HorizontalAlignment="Left" Margin="56,31,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1" FontFamily="Tw Cen MT Condensed Extra Bold"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Reporting" Width="250" Padding="6,5" Height="115" Background="Gray"  BorderBrush="#FF080808" BorderThickness="1" FontSize="24" >
+                <Grid Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Margin="0,0,-36,0">
+                    <m:Map x:Name="myMap1" CredentialsProvider="key" Mode="AerialWithLabels" Margin="521,45,45.2,126.6" Center="32.09029,34.84137" ZoomLevel="16"/>
+                    <GroupBox Header="Reporting information" HorizontalAlignment="Left" Height="380" Margin="41,6,0,0" VerticalAlignment="Top" Width="480" Foreground="#FFEAAB3D" BorderBrush="#FFE6A128" BorderThickness="2"  >
+                        <Grid >
+                            <TextBox x:Name="nameTxt" HorizontalAlignment="Left" Height="40" Margin="195,13,0,0" TextWrapping="Wrap" Width="231" FontSize="20" VerticalAlignment="Top" Background="{DynamicResource myLinearGradientBrush}"  />
+                            <DatePicker x:Name="dateRep" HorizontalAlignment="Left" Margin="194,61,0,0" VerticalAlignment="Top" Text="" Width="231" FontSize="20" Height="30" />
+                            <!--<TextBox x:Name="hourRep" HorizontalAlignment="Left" Height="40" Margin="288,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" />-->
+
+                            <TextBox x:Name="streetTxt" HorizontalAlignment="Left" Height="40" Margin="193,142,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" />
+                            <TextBox x:Name="boomsTxt" HorizontalAlignment="Left" Height="40" Margin="195,242,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" />
+                            <TextBox x:Name="intensityTxt" HorizontalAlignment="Left" Height="40" Margin="195,295,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" />
+
+
+                            <TextBlock HorizontalAlignment="Left" Margin="28,17,0,0" TextWrapping="Wrap"  Text="name" VerticalAlignment="Top" Height="36" Width="166"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="28,62,0,0" TextWrapping="Wrap" Text="date" VerticalAlignment="Top" Height="36" Width="166"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="28,105,0,0" TextWrapping="Wrap" Text="hour" VerticalAlignment="Top" Height="37" Width="166"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="25,146,0,0" TextWrapping="Wrap" Text="street" VerticalAlignment="Top" Height="36" Width="166"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="22,250,0,0" TextWrapping="Wrap" Text="num of hits" VerticalAlignment="Top" Height="36" Width="166"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="27,300,0,0" TextWrapping="Wrap" Text="intensity" VerticalAlignment="Top" Height="36" Width="166"/>
+                            <!--<local:TimePicker x:Name="TimeCombos" HorizontalAlignment="Left" Height="30" Margin="289,104,0,0" VerticalAlignment="Top" Width="160"/>-->
+                            <xctk:TimePicker x:Name="myTimePicker" HorizontalAlignment="Left" Margin="193,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="34" Width="224" FontSize="20"/>
+
+                            <TextBox x:Name="cityTxt" HorizontalAlignment="Left" Height="40" Margin="193,191,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="231" FontSize="20" />
+                            <TextBlock HorizontalAlignment="Left" Margin="23,194,0,0" TextWrapping="Wrap" Text="city" VerticalAlignment="Top" Height="36" Width="166"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="finishBtn"  Content="Finish" HorizontalAlignment="Left" Margin="606,401,0,0" VerticalAlignment="Top" Width="100" Foreground="#FFAE5522" BorderBrush="#FFAE5522" BorderThickness="2" Height="38" Click="FinishBtn_Click" />
+                    <TextBlock x:Name="successMsg" HorizontalAlignment="Center" Margin="241,415,360.2,15.8" TextWrapping="Wrap" Text="the inset success" VerticalAlignment="Center" Width="170" Foreground="#FF8B3E12" Visibility="Hidden"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="search and show" Width="250" Padding="6,5" Height="115" Background="Gray" BorderBrush="#FF080808" BorderThickness="1" FontSize="24">
+                <Grid Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" >
+                    <TabControl HorizontalAlignment="Left" Height="437" Margin="0,10,0,0" VerticalAlignment="Top" Width="735">
+                        <TabItem Header="view the report" Margin="-2,-2,-179,0">
+                            <Grid Background="#FFE5E5E5">
+                                <Button Content="Button" HorizontalAlignment="Left" Margin="31,26,0,0" VerticalAlignment="Top" Width="115" Height="60" Click="Button_Click"/>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="view the estimate" Margin="177.2,-5,-166.4,-1.6" HorizontalAlignment="Left" Width="398">
+                            <Grid Background="#FFE5E5E5">
+                                <m:Map CredentialsProvider="key" Margin="388,1,1.8,2.4"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Analysis" Width="250" Padding="6,5" Height="115" Background="Gray" BorderBrush="#FF080808" BorderThickness="1" FontSize="24">
+                <Grid Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+            </TabItem>
+        </TabControl>
+
+
+
+    </Grid>
+</Window>
