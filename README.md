@@ -1,0 +1,2 @@
+# WPF_Detecting_rocket_hits
+In case of emergency, telephone centers receive multiple messages from citizens claiming an event in their vicinity such as a missile attack, but they are not always able to accurately state the location of the event. In this project, we will address the incoming message collection and try to estimate the location of the events through cluster analysis, after finding a real location we will use the snapshots to find the correct coordinates and assess the nature of the analysis using the actual distance from the evaluation.
